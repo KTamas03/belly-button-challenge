@@ -59,9 +59,9 @@ These are the steps I took to completing this section:
   - app.js
   - bonus.js
 
-### Part 3: Deployed Website
+### Part 3: Deployed App to GitHub Pages
 
-Lastly to deploy my website containing the interactive dashboard, I following the steps outlined in the following link:
+Lastly, to deploy my app containing the interactive dashboard, I following the steps outlined in the following link:
 https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
 
 **My Website:**
