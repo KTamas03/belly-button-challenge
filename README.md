@@ -63,4 +63,4 @@ https://ktamas03.github.io/belly-button-challenge/
 
 ## Contributing
 
-- How to import ????
+- Plotly charts [????](https://plotly.com/javascript/basic-charts/)https://plotly.com/javascript/basic-charts/
