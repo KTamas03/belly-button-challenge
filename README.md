@@ -1,5 +1,5 @@
 ## belly-button-challenge
-Module 14 Challenge - Interactive Visualizations
+**Module 14 Challenge - Interactive Visualizations**
 
 In this scenario, I built an interactive dashboard to summarise findings from a Belly Button Biodiversity dataset. This was achieved by using Javascript and HTML coding.
 ![Dashboard Screenshot](https://github.com/KTamas03/belly-button-challenge/assets/132874272/bf225084-b773-40d9-ae11-ae09ff303a6c)
