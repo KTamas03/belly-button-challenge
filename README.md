@@ -75,4 +75,4 @@ https://ktamas03.github.io/belly-button-challenge/
 
 ## Contributing
 
-- Plotly charts (https://plotly.com/javascript/basic-charts/)https://plotly.com/javascript/basic-charts/)
+- Plotly charts (https://plotly.com/javascript/basic-charts/)
