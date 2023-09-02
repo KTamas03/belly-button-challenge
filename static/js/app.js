@@ -12,12 +12,19 @@ function fetchData() {
       const barChart = d3.select("#bar");
       const bubbleChart = d3.select("#bubble");
 
-      // Populate the dropdown with options
-      data.names.forEach(name => {
-        dropdown.append("option")
-          .attr("value", name)
-          .text(name);
-      });
+
+            // Create a function to update the dropdown options
+            function updateDropdownOptions() {
+              dropdown.html(""); // Clear existing options
+              data.names.forEach(name => {
+                dropdown.append("option")
+                  .attr("value", name)
+                  .text(name);
+              });
+            }
+      
+            // Populate the dropdown initially
+            updateDropdownOptions();
 
     // Create a function to update the bar chart based on selected individual
     function updateBarChart(selectedName) {
@@ -25,6 +32,13 @@ function fetchData() {
       const otuIds = selectedSample.otu_ids.slice(0, 10).reverse();
       const sampleValues = selectedSample.sample_values.slice(0, 10).reverse();
       const otuLabels = selectedSample.otu_labels.slice(0, 10).reverse();
+
+      // print values for bar chart to console
+      console.log("Bar Chart Data:", {
+        otuIds,
+        sampleValues,
+        otuLabels,
+      });
 
       const trace = {
         type: "bar",
@@ -47,6 +61,13 @@ function fetchData() {
     function updateBubbleChart(selectedName) {
       console.log("Updating bubble chart with:", selectedName);
       const selectedSample = data.samples.find(sample => sample.id === selectedName);
+
+       // print values for bubble chart to console
+      console.log("Bubble Chart Data:", {
+        otuIds: selectedSample.otu_ids,
+        sampleValues: selectedSample.sample_values,
+        otuLabels: selectedSample.otu_labels,
+      });
 
       const trace = {
         type: "bubble",
@@ -75,6 +96,9 @@ function fetchData() {
 function updateSampleMetadata(selectedName) {
   const selectedMetadata = data.metadata.find(metadata => metadata.id === +selectedName);
 
+  // print values for metadata to console
+  console.log("Sample Metadata:", selectedMetadata);
+
   // Clear existing metadata
   d3.select("#sample-metadata").html("");
 
@@ -84,15 +108,25 @@ function updateSampleMetadata(selectedName) {
   });
 }
 
-      // Set up an event listener to update metadata and charts when dropdown changes
-      dropdown.on("change", function () {
-        const selectedName = d3.select(this).property("value");
-        updateSampleMetadata(selectedName);
-        updateBarChart(selectedName);
-        updateBubbleChart(selectedName);
-        // Call the updateGaugeChart function from bonus.js
-        updateGaugeChart(selectedName);
-      });
+// Define the optionChanged function
+function optionChanged(selectedName) {
+  // This function can be used to handle the onchange event of your dropdown select
+  console.log("Selected Value:", selectedName);
+
+  // Call the functions to update metadata and charts with the selected value
+  updateSampleMetadata(selectedName);
+  updateBarChart(selectedName);
+  updateBubbleChart(selectedName);
+  // Call the updateGaugeChart function from bonus.js
+  updateGaugeChart(selectedName);  
+}
+
+// Set up an event listener to trigger the optionChanged function when the dropdown changes
+dropdown.on("change", function () {
+  const selectedName = d3.select(this).property("value");
+  optionChanged(selectedName); // Call the optionChanged function with the selected value
+});
+
 
       // Initialize the metadata and charts with the first individual's data
       // So all charts appear when webpage is opened
